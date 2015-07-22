@@ -16,8 +16,9 @@ import com.web.service.IQuestionService;
  */
 @Namespace("/")
 @Action(value = "question", results = {
-		@Result(name = "question_list", location = "/pages/user/user_list.jsp"),
-		@Result(name = "question_info", location = "/pages/user/user_info.jsp")
+		@Result(name = "list", location = "/pages/question/list.jsp"),
+		@Result(name = "table", location = "/pages/question/table.jsp"),
+		@Result(name = "info", location = "/pages/question/info.jsp")
 })
 public class QuestionAction extends BaseAction {
 
