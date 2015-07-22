@@ -9,21 +9,21 @@
 		<script src="${ROOT_PATH }/public/js/jquery-1.11.1.min.js"></script>
 		<script src="${ROOT_PATH }/public/js/utils.js"></script>
 		<script src="${ROOT_PATH }/public/ymPrompt/ymPrompt.js"></script>
-		<title>老师列表</title>
+		<title>题目列表</title>
 	</head>
 	<body>
 		<div class="container">
 			<div class="content">
 				<h4 class="contentNav mySource">
-					老师列表
+					题目列表
 				</h4>
 				<div class="tabBox classIng currBox">
 					<ul class="tbSelect">
 						<li>
-							<label>用户名：</label>
+							<label>题目名：</label>
 							<input type="text" id="name" value="${name}"/>
 							<span style="float: right; margin-right: 10px;">
-								<a href="javascript:;" class="btn bgblue tbSer" onclick="searchTeacher();">搜索</a>
+								<a href="javascript:;" class="btn bgblue tbSer" onclick="searchData();">搜索</a>
 								<a href="javascript:;" onclick="teacher(0);" class="btn bgblue tbSer">新增</a>
 								<a href="javascript:;" onclick="deleteAll();" class="btn bgblue tbSer">删除</a>
 								<a href="${ROOT_PATH }/" class="btn bgblue tbSer">返回首页</a>
@@ -37,12 +37,12 @@
 	</body>
 	<script type="text/javascript">
 		$(function(){
-			ajaxHtml('${ROOT_PATH}/teacher!table.action', 'listData');
+			ajaxHtml('${ROOT_PATH}/question!table.action', 'listData');
 		});
 	
 		function teacher(id){
 			ymPrompt.win({
-				message:"${ROOT_PATH}/teacher!teacherInfo.action?id=" + id,
+				message:"${ROOT_PATH}/question!info.action?id=" + id,
 				width:500,
 				height:420,
 				title:'老师信息',
@@ -50,14 +50,14 @@
 			});
 		}
 		
-		function searchTeacher(){
-			ajaxHtml('${ROOT_PATH}/teacher!table.action?name=' + $('#name').val(), 'listData');
+		function searchData(){
+			ajaxHtml('${ROOT_PATH}/question!table.action?name=' + $('#name').val(), 'listData');
 		}
 		
 		function deleteTeacher(id) {
 			$.ajax({
 				type : "POST",
-				url : '${ROOT_PATH}/teacher!delete.action',
+				url : '${ROOT_PATH}/question!delete.action',
 				data : {
 					id : id
 				},
@@ -69,8 +69,7 @@
 							message:"删除成功",
 							closeBtn:false,
 							handler:function(){
-								// window.location.href = '${ROOT_PATH}/teacher.action';
-								ajaxHtml('${ROOT_PATH}/teacher!table.action', 'listData');
+								ajaxHtml('${ROOT_PATH}/question!table.action', 'listData');
 							}
 						});
 					} else {
@@ -87,7 +86,7 @@
 		function deleteAll() {
 			$.ajax({
 				type : "POST",
-				url : '${ROOT_PATH}/teacher!deleteByIds.action',
+				url : '${ROOT_PATH}/question!deleteByIds.action',
 				data : {
 					ids : getCheckedToArray()
 				},
@@ -99,8 +98,7 @@
 							message:"删除成功",
 							closeBtn:false,
 							handler:function(){
-								// window.location.href = '${ROOT_PATH}/teacher.action';
-								ajaxHtml('${ROOT_PATH}/teacher!table.action', 'listData');
+								ajaxHtml('${ROOT_PATH}/question!table.action', 'listData');
 							}
 						});
 					} else {
