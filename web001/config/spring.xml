@@ -11,9 +11,4 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd
 
 	<!-- 自动扫描dao和service包(自动注入) -->
 	<context:component-scan base-package="com.web.dao,com.web.service" />
-	
-	<bean id="config" class="com.base.util.Config">
-		<property name="username" value="${admin.username}"/>
-		<property name="password" value="${admin.password}"/>
-	</bean>
 </beans>
