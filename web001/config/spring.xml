@@ -16,4 +16,6 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		<property name="username" value="${admin.username}"/>
 		<property name="password" value="${admin.password}"/>
 	</bean>
+	
+	<bean id="springUtil" class="com.base.util.SpringUtil"/>
 </beans>
