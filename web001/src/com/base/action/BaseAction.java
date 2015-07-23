@@ -43,11 +43,10 @@ public class BaseAction extends ActionSupport implements
 	 */
 	public void writeJson(Object object) {
 		try {
-			String json = JSON.toJSONStringWithDateFormat(object,
-					"yyyy-MM-dd HH:mm:ss");
-			ServletActionContext.getResponse().setContentType(
-					"text/json;charset=utf-8");
-			System.out.println(json);
+			String json = JSON.toJSONStringWithDateFormat(object, "yyyy-MM-dd HH:mm:ss");
+			// 下面注释的代码就可以支持跨域 "*"表明允许任何地址的跨域调用，正式部署时应替换为正式地址
+			ServletActionContext.getResponse().addHeader("Access-Control-Allow-Origin", "*"); 
+			ServletActionContext.getResponse().setContentType("text/json;charset=utf-8");
 			ServletActionContext.getResponse().getWriter().write(json);
 			ServletActionContext.getResponse().getWriter().flush();
 			ServletActionContext.getResponse().getWriter().close();
