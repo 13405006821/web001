@@ -9,10 +9,12 @@ public interface IQuestionService {
 	List<Question> findList(String name, int startIndex, int pageSize);
 
 	int findCount(String name);
+	
+	Question getById(Integer id);
 
 	void saveOrUpdate(Question question);
 
-	void delete(String id);
+	void delete(Integer id);
 
 	void deleteByIds(String ids);
 }

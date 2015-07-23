@@ -31,7 +31,7 @@ public class QuestionAction extends BaseAction {
 	
 	private List<Question> list = new ArrayList<Question>();
 	
-	private String id;
+	private Integer id;
 	private String ids;
 	private String name;
 	private Question question;
@@ -95,11 +95,11 @@ public class QuestionAction extends BaseAction {
 		this.list = list;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
