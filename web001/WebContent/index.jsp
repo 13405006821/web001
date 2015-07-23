@@ -26,13 +26,8 @@
 						</tr>
 						<tr>
 							<td>1</td>
-							<td align="left">用户信息管理(动态分页)</td>
-							<td><a href="${ROOT_PATH}/user.action">查看</a></td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td align="left">老师信息管理(静态分页)</td>
-							<td><a href="${ROOT_PATH}/teacher.action">查看</a></td>
+							<td align="left">题目信息管理(静态分页)</td>
+							<td><a href="${ROOT_PATH}/question.action">查看</a></td>
 						</tr>
 					</table>
 				</div>
