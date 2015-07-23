@@ -7,7 +7,6 @@ import java.util.Set;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.base.action.BaseAction;
@@ -22,10 +21,7 @@ import com.web.service.IQuestionService;
  * @author Liup
  */
 @Namespace("/")
-@Action(value = "webService", results = {
-		@Result(name = "user_list", location = "/pages/user/user_list.jsp"),
-		@Result(name = "user_info", location = "/pages/user/user_info.jsp")
-})
+@Action(value = "webService")
 public class WebServiceAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
