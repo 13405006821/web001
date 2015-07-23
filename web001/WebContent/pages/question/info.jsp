@@ -9,32 +9,47 @@
 		<script type="text/javascript" src="${ROOT_PATH }/public/js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="${ROOT_PATH }/public/DatePicker/WdatePicker.js"></script>
 		<script src="${ROOT_PATH }/public/ymPrompt/ymPrompt.js"></script>
-		<title>老师信息</title>
+		<title>题目信息</title>
 	</head>
 	<body>
 		<form action="" id="dataForm">
-			<input name="teacher.id" type="hidden" value="${id}"/>
+			<input name="question.id" type="hidden" value="${id}"/>
 			<div class="container">
 				<div class="content">
-					<h4 class="contentNav upload">老师信息</h4>
+					<h4 class="contentNav upload">题目信息</h4>
 					<ul class="detailBox checkDetail uploadBox">
 						<li>
-							<label for="" class="cName">姓名：</label>
+							<label for="" class="cName">题目：</label>
 							<div class="cCont">
-								<input type="text" class="typeTitle" name="teacher.name" value="${teacher.name }"/>
+								<textarea rows="3" style="width: 90%;" name="question.name">${question.name}</textarea>
 							</div>
 						</li>
 						<li>
-							<label for="" class="cName">出生日期：</label>
+							<label for="" class="cName">答案A：</label>
 							<div class="cCont">
-								<input type="text" class="typeTitle" name="teacher.birthday" value="<fmt:formatDate value="${teacher.birthday}"/>" 
-									onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+								<s:textarea name="question.answerList[0].name" rows="3" style="width: 90%;"></s:textarea>
+								<s:hidden name="question.answerList[0].id"></s:hidden>
 							</div>
 						</li>
 						<li>
-							<label for="" class="cName">手机号码：</label>
+							<label for="" class="cName">答案B：</label>
 							<div class="cCont">
-								<input type="text" class="typeTitle" name="teacher.phone" value="${teacher.phone }"/>
+								<s:textarea name="question.answerList[1].name" rows="3" style="width: 90%;"></s:textarea>
+								<s:hidden name="question.answerList[1].id"></s:hidden>
+							</div>
+						</li>
+						<li>
+							<label for="" class="cName">答案C：</label>
+							<div class="cCont">
+								<s:textarea name="question.answerList[2].name" rows="3" style="width: 90%;"></s:textarea>
+								<s:hidden name="question.answerList[2].id"></s:hidden>
+							</div>
+						</li>
+						<li>
+							<label for="" class="cName">答案D：</label>
+							<div class="cCont">
+								<s:textarea name="question.answerList[3].name" rows="3" style="width: 90%;"></s:textarea>
+								<s:hidden name="question.answerList[3].id"></s:hidden>
 							</div>
 						</li>
 					</ul>
@@ -48,7 +63,7 @@
 			var params = $("#dataForm").serialize();
 			$.ajax({
 				type : "POST",
-				url : '${ROOT_PATH}/teacher!saveOrUpdate.action',
+				url : '${ROOT_PATH}/question!saveOrUpdate.action',
 				data : params,
 				dataType : "json",
 				success : function(data) {
@@ -59,8 +74,7 @@
 							height:260,
 							handler:function(){
 								window.parent.ymPrompt.doHandler('error',true);
-								// window.parent.location.href = '${ROOT_PATH}/teacher.action';
-								window.parent.ajaxHtml('${ROOT_PATH}/teacher!table.action', 'listData');
+								window.parent.ajaxHtml('${ROOT_PATH}/question!table.action', 'listData');
 							}
 						});
 					} else {

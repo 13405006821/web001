@@ -47,10 +47,11 @@ public class QuestionAction extends BaseAction {
 	public String table(){
 		list = questionService.findList(name, getStartIndex(), getPageSize());
 		setCount(questionService.findCount(name));
-		return "teacher_table";
+		return "table";
 	}
 
 	public String info() throws Exception {
+		question = questionService.getById(id);
 		return "info";
 	}
 	

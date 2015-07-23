@@ -14,22 +14,22 @@
 			<td colspan="6">暂无数据</td>
 		</tr>
 	</c:if>
-	<c:forEach items="${list}" var="teacher" varStatus="status">
+	<c:forEach items="${list}" var="question" varStatus="status">
 		<tr>
-			<td><input type="checkbox" value="${teacher.id}" class="ids"/></td>
+			<td><input type="checkbox" value="${question.id}" class="ids"/></td>
 			<td>${status.count}</td>
-			<td>${teacher.name}</td>
-			<td><fmt:formatDate value="${teacher.birthday}"/></td>
-			<td>${teacher.phone}</td>
+			<td>${question.name}</td>
+			<td>${question.name}</td>
+			<td>${question.name}</td>
 			<td>
-				<a href="javascript:;" class="enterClass green" onclick="teacher('${teacher.id}');">修改</a>
-				<a href="javascript:;" class="endClass red" onclick="deleteTeacher('${teacher.id}');">删除</a>
+				<a href="javascript:;" class="enterClass green" onclick="info('${question.id}');">修改</a>
+				<a href="javascript:;" class="endClass red" onclick="deleteData('${question.id}');">删除</a>
 			</td>
 		</tr>
 	</c:forEach>
 </table>
 <pg:pager export="offset,currentPageNumber=pageNumber" items="${count}" isOffset="true" 
-	maxPageItems="${pageSize}" maxIndexPages="${pageSize}" scope="request" index="center" url="teacher!table.action">
+	maxPageItems="${pageSize}" maxIndexPages="${pageSize}" scope="request" index="center" url="question!table.action">
 	<pg:param name="name" value="${name }" /> 
 	<jsp:include page="/pages/base/ajaxPage.jsp" flush="true">
 		<jsp:param value="listData" name="domId" />

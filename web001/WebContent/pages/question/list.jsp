@@ -24,7 +24,7 @@
 							<input type="text" id="name" value="${name}"/>
 							<span style="float: right; margin-right: 10px;">
 								<a href="javascript:;" class="btn bgblue tbSer" onclick="searchData();">搜索</a>
-								<a href="javascript:;" onclick="teacher(0);" class="btn bgblue tbSer">新增</a>
+								<a href="javascript:;" onclick="info(0);" class="btn bgblue tbSer">新增</a>
 								<a href="javascript:;" onclick="deleteAll();" class="btn bgblue tbSer">删除</a>
 								<a href="${ROOT_PATH }/" class="btn bgblue tbSer">返回首页</a>
 							</span>
@@ -40,12 +40,12 @@
 			ajaxHtml('${ROOT_PATH}/question!table.action', 'listData');
 		});
 	
-		function teacher(id){
+		function info(id){
 			ymPrompt.win({
 				message:"${ROOT_PATH}/question!info.action?id=" + id,
-				width:500,
-				height:420,
-				title:'老师信息',
+				width:600,
+				height:500,
+				title:'题目信息',
 				iframe:true
 			});
 		}
@@ -54,7 +54,7 @@
 			ajaxHtml('${ROOT_PATH}/question!table.action?name=' + $('#name').val(), 'listData');
 		}
 		
-		function deleteTeacher(id) {
+		function deleteData(id) {
 			$.ajax({
 				type : "POST",
 				url : '${ROOT_PATH}/question!delete.action',

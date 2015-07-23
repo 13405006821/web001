@@ -6,13 +6,17 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.web.dao.IAnswerDao;
 import com.web.dao.IQuestionDao;
+import com.web.entity.Answer;
 import com.web.entity.Question;
 import com.web.service.IQuestionService;
 
 @Service("questionService")
 public class QuestionServiceImpl implements IQuestionService {
 	
+	@Autowired
+	private IAnswerDao answerDao;
 	@Autowired
 	private IQuestionDao questionDao;
 
@@ -36,11 +40,19 @@ public class QuestionServiceImpl implements IQuestionService {
 	}
 
 	@Override
-	public void saveOrUpdate(Question teacher) {
-		if(teacher.getId() > 0){
-			questionDao.update(teacher);
+	public void saveOrUpdate(Question question) {
+		if(question.getId() > 0){
+			questionDao.update(question);
+			for(Answer answer : question.getAnswerList()){
+				answer.setQuestion(question);
+				answerDao.update(answer);
+			}
 		}else{
-			questionDao.save(teacher);
+			questionDao.save(question);
+			for(Answer answer : question.getAnswerList()){
+				answer.setQuestion(question);
+				answerDao.save(answer);
+			}
 		}
 	}
 
