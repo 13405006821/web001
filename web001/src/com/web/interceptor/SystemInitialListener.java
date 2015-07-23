@@ -33,7 +33,7 @@ public class SystemInitialListener implements ServletContextListener {
 		ServletContext application = config.getServletContext();
 		try {
 			IQuestionService questionService = (IQuestionService) SpringUtil.getBean("questionService");
-			List<Question> list = questionService.findAll();
+			List<Question> list = questionService.initFindAll();
 			application.setAttribute(Constants.APPLICATION_ALL_QUESTION, list);
 		} catch (Exception e) {
 			e.printStackTrace();

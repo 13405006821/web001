@@ -74,7 +74,7 @@ public class QuestionServiceImpl implements IQuestionService {
 	}
 
 	@Override
-	public List<Question> findAll() {
+	public List<Question> initFindAll() {
 		return questionDao.query(" order by id ");
 	}
 }
