@@ -1,0 +1,72 @@
+body {
+	background: url(../images/login_bg.png) repeat-x #c8c8c8;
+}
+body,h1,h2,h3,h4,h5,h6,hr,p,blockquote,dl,dt,dd,ul,ol,li,pre,form,fieldset,legend,button,input,textarea,th,td{
+	margin:0;padding:0;
+}
+body {font-size:12px;line-height:1.5;font-family:SimSun,Tahoma,Verdana,Arial,sans-serif;font-family:微软雅黑;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+ul,ol{list-style:none;}
+.loginBoard {
+	width: 518px; height: 356px; background: url(../images/login_panel_bg.png) repeat; margin: 180px auto auto auto;
+}
+
+.loginBoard .LoginTitle h3 {
+	height: 75px;
+}
+
+.loginBoard ul {
+	height: 200px; margin-top: 30px; 
+}
+.loginBoard ul li {
+	padding: 7px 90px; text-align: center;
+}
+.loginBoard ul li.loginBoardTitle {
+	border: 0; height: 30px;
+}
+
+.loginBoard ul li label.txt {
+	display:inline-block; font-size:18px;font-weight:normal;width: 100px;text-align:right;color:#555;
+}
+.loginBoard ul li.forget{text-align:left;margin-left: 120px;color:#555;}
+.loginBoard ul li#err{height:15px;color: #ba2e0b;padding:0 90px;border:1px solid #ededed;}
+.loginBoard ul li input.buttonbox {
+	width: 93px; height: 28px; border: 0; margin-top: 10px; background: url(../images/login_btn.png) repeat;
+}
+
+.loginBoard ul li input.username,.loginBoard ul li input.password {
+	width: 173px; height: 20px; line-height: 20px; margin-left: 23px; margin-top: 2px; border: 0;
+}
+
+.login_panel_username {
+	width: 202px; height: 26px; display: inline-block; background: url(../images/login_panel_username_bg.png) no-repeat;
+}
+
+.login_panel_password {
+	width: 202px; height: 26px; display: inline-block; background: url(../images/login_panel_password_bg.png) no-repeat;
+}
+/*************************************登录CSS************************************
+.loginBoard {
+	width: 450px; height: 210px; margin: 120px auto auto auto;
+}
+
+.loginBoard .LoginTitle h3 {
+	font-weight: 500; font-size: 48px; text-align: center;
+}
+
+.loginBoard ul {
+	height: 200px; margin-top: 30px; border: 1px solid #747474;
+}
+
+.loginBoard ul li {
+	padding: 10px 90px; text-align: center;
+}
+
+.loginBoard ul li h5 {
+	float: left; font-weight: 500; padding: 3px;
+}
+
+.loginBoard ul li.loginBoardTitle {
+	padding: 5px; color: #333; font-size: 14px; text-align: left; text-indent: 10px; border-bottom: 1px solid #747474;
+}
+*/
