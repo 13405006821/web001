@@ -72,4 +72,9 @@ public class QuestionServiceImpl implements IQuestionService {
 		}
 		return questionDao.countInt(hql);
 	}
+
+	@Override
+	public List<Question> findAll() {
+		return questionDao.query(" order by id ");
+	}
 }
