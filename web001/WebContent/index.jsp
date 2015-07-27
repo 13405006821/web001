@@ -35,9 +35,9 @@
 							<div class="center">
 								<h1>
 									<i class="icon-leaf green"></i>
-									<span class="red">Ace Application</span>
+									<span class="red">${systemName }</span>
 								</h1>
-								<h4 class="blue">&copy; Company Name</h4>
+								<h4 class="blue">&copy; ${companyName }</h4>
 							</div>
 							<div class="space-6"></div>
 							<div class="position-relative">

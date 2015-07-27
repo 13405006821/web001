@@ -17,6 +17,6 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd
 	<!-- 基础配置项 -->
 	<bean id="systemConfig" class="com.base.util.SystemConfig">
 		<property name="systemName" value="${systemConfig.systemName}"/>
-		<property name="companyNamet" value="${systemConfig.companyNamet}"/>
+		<property name="companyName" value="${systemConfig.companyName}"/>
 	</bean>
 </beans>
