@@ -11,4 +11,10 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd
 
 	<!-- 自动扫描dao和service包(自动注入) -->
 	<context:component-scan base-package="com.web.dao,com.web.service" />
+	
+	<!-- 基础配置项 -->
+	<bean id="systemConfig" class="com.base.util.SystemConfig">
+		<property name="systemName" value="${systemConfig.systemName}"/>
+		<property name="companyNamet" value="${systemConfig.companyNamet}"/>
+	</bean>
 </beans>
