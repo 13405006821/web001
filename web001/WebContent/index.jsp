@@ -49,7 +49,7 @@
 												请输入用户名和密码
 											</h4>
 											<div class="space-6"></div>
-											<form action="" method="post">
+											<form action="${ROOT_PATH }/login.action" method="post">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -73,9 +73,8 @@
 															<span class="lbl"> Remember Me</span>
 														</label>
 
-														<button type="button" class="width-35 pull-right btn btn-sm btn-primary">
-															<i class="icon-key"></i>
-															Login
+														<button type="button" id="login" class="width-35 pull-right btn btn-sm btn-primary">
+															<i class="icon-key"></i>登录
 														</button>
 													</div>
 

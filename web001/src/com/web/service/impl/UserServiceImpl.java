@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import com.base.util.Json;
 import com.web.dao.IUserDao;
 import com.web.entity.User;
 import com.web.service.IUserService;
@@ -54,5 +55,18 @@ public class UserServiceImpl implements IUserService {
 			hql += " and username like '%" + username + "%' ";
 		}
 		return userDao.countInt(hql);
+	}
+
+	@Override
+	public Json login(User user) {
+		Json json = new Json();
+		String hql = " and username = '" + user.getUsername() + "' ";
+		List<User> list = userDao.query(hql);
+		if(list.size() > 0){
+			if(list.get(0).getPassword().equals(user.getPassword())){
+				json.setSuccess(true);
+			}
+		}
+		return json;
 	}
 }

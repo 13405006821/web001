@@ -2,6 +2,7 @@ package com.web.service;
 
 import java.util.List;
 
+import com.base.util.Json;
 import com.web.entity.User;
 
 public interface IUserService {
@@ -16,4 +17,5 @@ public interface IUserService {
 
 	int findCount(String username);
 
+	Json login(User user);
 }
