@@ -6,4 +6,7 @@ public class Constants {
 	
 	public static final String APPLICATION_COMPANYNAME = "APPLICATION_COMPANYNAME";
 	public static final String APPLICATION_SYSTEMNAME = "APPLICATION_SYSTEMNAME";
+	
+	public static final String MSG_LOGIN_SUCCESS = "登陆成功";
+	public static final String MSG_LOGIN_FAILURE = "登陆失败";
 }

@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import com.base.util.Constants;
 import com.base.util.Json;
 import com.web.dao.IUserDao;
 import com.web.entity.User;
@@ -62,9 +63,11 @@ public class UserServiceImpl implements IUserService {
 		Json json = new Json();
 		String hql = " and username = '" + user.getUsername() + "' ";
 		List<User> list = userDao.query(hql);
+		json.setMsg(Constants.MSG_LOGIN_FAILURE);
 		if(list.size() > 0){
 			if(list.get(0).getPassword().equals(user.getPassword())){
 				json.setSuccess(true);
+				json.setMsg(Constants.MSG_LOGIN_SUCCESS);
 			}
 		}
 		return json;

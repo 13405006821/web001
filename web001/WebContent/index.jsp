@@ -5,25 +5,25 @@
 		<meta charset="utf-8" />
 		<title>${APPLICATION_SYSTEMNAME }登录页面</title>
 		<!-- basic styles -->
-		<link href="${ROOT_PATH }/public/css/bootstrap.min.css" rel="stylesheet" />
-		<link rel="stylesheet" href="${ROOT_PATH }/public/css/font-awesome.min.css" />
+		<link href="${ROOT_PATH }/public/ace/assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="${ROOT_PATH }/public/ace/assets/css/font-awesome.min.css" />
 		<!--[if IE 7]>
-		  <link rel="stylesheet" href="${ROOT_PATH }/public/css/font-awesome-ie7.min.css" />
+		  <link rel="stylesheet" href="${ROOT_PATH }/public/ace/assets/css/font-awesome-ie7.min.css" />
 		<![endif]-->
 		<!-- page specific plugin styles -->
 		<!-- fonts -->
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
 		<!-- ace styles -->
-		<link rel="stylesheet" href="${ROOT_PATH }/public/css/ace.min.css" />
-		<link rel="stylesheet" href="${ROOT_PATH }/public/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="${ROOT_PATH }/public/ace/assets/css/ace.min.css" />
+		<link rel="stylesheet" href="${ROOT_PATH }/public/ace/assets/css/ace-rtl.min.css" />
 		<!--[if lte IE 8]>
-		  <link rel="stylesheet" href="${ROOT_PATH }/public/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="${ROOT_PATH }/public/ace/assets/css/ace-ie.min.css" />
 		<![endif]-->
 		<!-- inline styles related to this page -->
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-		<script src="${ROOT_PATH }/public/js/html5shiv.js"></script>
-		<script src="${ROOT_PATH }/public/js/respond.min.js"></script>
+		<script src="${ROOT_PATH }/public/ace/assets/js/html5shiv.js"></script>
+		<script src="${ROOT_PATH }/public/ace/assets/js/respond.min.js"></script>
 		<![endif]-->
 	</head>
 	<body class="login-layout">
@@ -181,24 +181,27 @@
 		</div><!-- /.main-container -->
 		<!-- basic scripts -->
 		<!--[if !IE]> -->
-		<script src="${ROOT_PATH }/public/js/jquery-2.0.3.min.js"></script>
+		<script src="${ROOT_PATH }/public/ace/assets/js/jquery-2.0.3.min.js"></script>
 		<!-- <![endif]-->
 		<!--[if IE]>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<![endif]-->
 		<!--[if !IE]> -->
 		<script type="text/javascript">
-			window.jQuery || document.write("<script src='${ROOT_PATH }/public/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+			window.jQuery || document.write("<script src='${ROOT_PATH }/public/ace/assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
 		</script>
 		<!-- <![endif]-->
 		<!--[if IE]>
 			<script type="text/javascript">
-				window.jQuery || document.write("<script src='${ROOT_PATH }/public/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+				window.jQuery || document.write("<script src='${ROOT_PATH }/public/ace/assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
 			</script>
 		<![endif]-->
 		<script type="text/javascript">
-			if("ontouchend" in document) document.write("<script src='${ROOT_PATH }/public/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+			if("ontouchend" in document) document.write("<script src='${ROOT_PATH }/public/ace/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+			
 		</script>
+		<script src="${ROOT_PATH }/public/bootstrap-growl/bootstrap.min.js"></script>
+		<script src="${ROOT_PATH }/public/bootstrap-growl/jquery.bootstrap-growl.js"></script>
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			function show_box(id) {
@@ -214,6 +217,24 @@
 	$(function(){
 		$('#login').click(function(){
 			var params = $("#loginForm").serialize();
+			if($('input[name="user.username"]').val().trim() == ''){
+				$.bootstrapGrowl('用户名不能为空', {
+                    type: 'danger',
+                    align: 'center',
+                    width: 'auto',
+                    allow_dismiss: false
+                });
+				return false;
+			}
+			if($('input[name="user.password"]').val().trim() == ''){
+				$.bootstrapGrowl('密码不能为空', {
+                    type: 'danger',
+                    align: 'center',
+                    width: 'auto',
+                    allow_dismiss: false
+                });
+				return false;
+			}
 			$.ajax({
 				type:'post',
 				url:"${ROOT_PATH}/login.action",
@@ -221,9 +242,19 @@
 				data:params,
 				success:function(data){
 					if(data.success){
-						alert(data.msg);
+						$.bootstrapGrowl(data.msg, {
+	                        type: 'success',
+	                        align: 'center',
+	                        width: 'auto',
+	                        allow_dismiss: false
+	                    });
 					}else{
-						alert(data.msg);
+						$.bootstrapGrowl(data.msg, {
+	                        type: 'danger',
+	                        align: 'center',
+	                        width: 'auto',
+	                        allow_dismiss: false
+	                    });
 					}
 				}
 			});
