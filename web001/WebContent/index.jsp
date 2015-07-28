@@ -3,7 +3,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>登录页面</title>
+		<title>${APPLICATION_SYSTEMNAME }登录页面</title>
 		<!-- basic styles -->
 		<link href="${ROOT_PATH }/public/css/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="${ROOT_PATH }/public/css/font-awesome.min.css" />
@@ -49,18 +49,18 @@
 												请输入用户名和密码
 											</h4>
 											<div class="space-6"></div>
-											<form action="${ROOT_PATH }/login.action" method="post">
+											<form id="loginForm">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
+															<input type="text" class="form-control" placeholder="用户名" name="user.username"/>
 															<i class="icon-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
+															<input type="password" class="form-control" placeholder="密码" name="user.password"/>
 															<i class="icon-lock"></i>
 														</span>
 													</label>
@@ -70,7 +70,7 @@
 													<div class="clearfix">
 														<label class="inline">
 															<input type="checkbox" class="ace" />
-															<span class="lbl"> Remember Me</span>
+															<span class="lbl"> 记住我</span>
 														</label>
 
 														<button type="button" id="login" class="width-35 pull-right btn btn-sm btn-primary">
@@ -104,11 +104,11 @@
 										<div class="widget-main">
 											<h4 class="header green lighter bigger">
 												<i class="icon-group blue"></i>
-												New User Registration
+												新用户注册
 											</h4>
 
 											<div class="space-6"></div>
-											<p> Enter your details to begin: </p>
+											<p> 请输入详细信息: </p>
 
 											<form>
 												<fieldset>
@@ -153,11 +153,11 @@
 													<div class="clearfix">
 														<button type="reset" class="width-30 pull-left btn btn-sm">
 															<i class="icon-refresh"></i>
-															Reset
+															重置
 														</button>
 
 														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
-															Register
+															注册
 															<i class="icon-arrow-right icon-on-right"></i>
 														</button>
 													</div>
@@ -168,7 +168,7 @@
 										<div class="toolbar center">
 											<a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
 												<i class="icon-arrow-left"></i>
-												Back to login
+												返回登陆
 											</a>
 										</div>
 									</div><!-- /widget-body -->
@@ -181,7 +181,7 @@
 		</div><!-- /.main-container -->
 		<!-- basic scripts -->
 		<!--[if !IE]> -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="${ROOT_PATH }/public/js/jquery-2.0.3.min.js"></script>
 		<!-- <![endif]-->
 		<!--[if IE]>
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -210,4 +210,24 @@
 			<script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script>
 		</div>
 	</body>
+	<script type="text/javascript">
+	$(function(){
+		$('#login').click(function(){
+			var params = $("#loginForm").serialize();
+			$.ajax({
+				type:'post',
+				url:"${ROOT_PATH}/login.action",
+				dataType:'JSON',
+				data:params,
+				success:function(data){
+					if(data.success){
+						alert(data.msg);
+					}else{
+						alert(data.msg);
+					}
+				}
+			});
+		});
+	});
+	</script>
 </html>
